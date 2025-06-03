@@ -1,0 +1,19 @@
+{% extends 'cricket/base.html' %}
+{% block content %}
+<h1 class="text-center mb-4">Teams</h1>
+<div class="row">
+    {% for team in teams %}
+    <div class="col-md-4 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ team.name }}</h5>
+                {% if team.logo %}
+                <img src="{{ team.logo.url }}" alt="{{ team.name }} Logo" class="img-fluid" style="max-height: 100px;">
+                {% endif %}
+                <a href="{% url 'team_detail' team.id %}" class="btn btn-primary mt-2">View Team</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'cricket/base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'cricket/css/match.css' %}">
+<script src="{% static 'cricket/js/charts.js' %}"></script>
+<h1 class="text-center mb-4">{{ match.team1.name }} vs {{ match.team2.name }}</h1>
+<div class="row">
+    <div class="col-md-6">
+        <div class="scorecard">
+            <h3>Scorecard</h3>
+            <p>{{ match.team1.name }}: <span id="score-{{ match.id }}">{{ team1_score }}</span> runs</p>
+            <p>{{ match.team2.name }}: {{ team2_score }} runs</p>
+            <h4>Win Probability</h4>
+            <p>{{ match.team1.name }}: {{ team1_win_prob|floatformat:2 }}%</p>
+            <p>{{ match.team2.name }}: {{ team2_win_prob|floatformat:2 }}%</p>
+            <h4>Predicted Score (20 Overs)</h4>
+            <p>{{ predicted_score|floatformat:0 }} runs</p>
+            {% if match.status == 'Live' %}
+            <button class="btn btn-primary live-update-btn" data-match-id="{{ match.id }}">Update Score</button>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h3>Run Rate Graph</h3>
+        <div class="chart-container">
+            <canvas id="runRateChart" data-graph-data="{{ graph_data|safe }}"></canvas>
+        </div>
+    </div>
+</div>
+<h3>Ball-by-Ball Commentary</h3>
+<ul class="list-group">
+    {% for ball in balls %}
+    <li class="list-group-item">
+        Over {{ ball.over }}: {{ ball.batsman.name }} vs {{ ball.bowler.name }} - {{ ball.runs }} run(s)
+        {% if ball.is_wicket %} (Wicket) {% endif %}
+        {% if ball.is_wide %} (Wide) {% endif %}
+        {% if ball.is_no_ball %} (No Ball) {% endif %}
+        <br>{{ ball.commentary }}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

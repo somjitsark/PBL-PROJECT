@@ -1,0 +1,16 @@
+/* Styles for team and player pages */
+.team-logo {
+    max-height: 100px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+}
+
+.player-card .card-title {
+    font-size: 1.25rem;
+    color: #1a3c34;
+}
+
+.player-card .card-text {
+    font-size: 0.9rem;
+    color: #4a5568;
+}

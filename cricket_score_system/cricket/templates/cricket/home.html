@@ -1,0 +1,22 @@
+{% extends 'cricket/base.html' %}
+{% block content %}
+<h1 class="text-center mb-4">Matches</h1>
+<div class="row">
+    {% for match in matches %}
+    <div class="col-md-4 mb-3">
+        <div class="card match-card">
+            <div class="card-body">
+                <h5 class="card-title">{{ match.team1.name }} vs {{ match.team2.name }}</h5>
+                <p class="card-text">Date: {{ match.date|date:"F d, Y" }}</p>
+                <p class="card-text">Venue: {{ match.venue }}</p>
+                <p class="card-text">Status: {{ match.status }}</p>
+                {% if match.winner %}
+                <p class="card-text">Winner: {{ match.winner.name }}</p>
+                {% endif %}
+                <a href="{% url 'match_detail' match.id %}" class="btn btn-light">View Details</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

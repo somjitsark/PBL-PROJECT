@@ -1,0 +1,27 @@
+/* Styles for the home page */
+.match-card {
+    background: linear-gradient(135deg, #1a3c34, #2a6b5f);
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.match-card .card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.match-card .card-text {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.match-card .btn-light {
+    background-color: #a3e635;
+    color: #1a202c;
+    font-weight: 600;
+}
+
+.match-card .btn-light:hover {
+    background-color: #93d52b;
+}
