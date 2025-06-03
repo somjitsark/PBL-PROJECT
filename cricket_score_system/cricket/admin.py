@@ -3,7 +3,7 @@ from .models import Team, Player, Match, Ball
 
 @admin.register(Team)
 class TeamAdmin(admin.ModelAdmin):
-    list_display = ('name', 'created_at')
+    list_display = ('name', 'created_at')  #this list name and created date 
     search_fields = ('name',)
 
 @admin.register(Player)
