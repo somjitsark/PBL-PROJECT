@@ -23,3 +23,5 @@ class BallAdmin(admin.ModelAdmin):
     list_display = ('match', 'over', 'batsman', 'bowler', 'runs', 'is_wicket')
     list_filter = ('match', 'is_wicket', 'is_wide', 'is_no_ball')
     search_fields = ('batsman__name', 'bowler__name')
+    #rcb#
+    #comment bhai#
